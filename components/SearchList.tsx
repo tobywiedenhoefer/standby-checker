@@ -6,7 +6,7 @@ import {textStyle} from "@/constants/styling"
 import P from "@/components/text/P"
 
 export type FlatListData = {
-    id: number,
+    id: string,
     title: string,
 }
 export type SearchListProp = {
