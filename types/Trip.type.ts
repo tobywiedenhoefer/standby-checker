@@ -1,6 +1,11 @@
 type Trip = {
-    stops: number,
-    airlines: number[],
-    countries: number[],
+    id: string,
+    layovers: number,
+    airlines: string[],
+    countries: string[],
+    destinations: {
+        fromCity: string,
+        toCity: string
+    }
 }
 export default Trip
