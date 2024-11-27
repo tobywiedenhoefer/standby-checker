@@ -11,9 +11,13 @@ export const textStyle = StyleSheet.create({
     label: {fontSize: 16},
 })
 
-export const colorScheme = StyleSheet.create({
-    light: {backgroundColor: "#ECEDEE"}
-})
+export const colorScheme = {
+    light: {
+        backgroundColor: "#ECEDEE",
+        backgroundAccentColor: "gray",
+        foregroundColor: "white"
+    }
+}
 
 export const buttonStyles = StyleSheet.create({
     base: {
@@ -26,4 +30,40 @@ export const buttonStyles = StyleSheet.create({
     primary: {},
     secondary: {},
     tertiary: {},
+})
+
+export const tripCardStyles = StyleSheet.create({
+    shape: {
+        width: "100%",
+        maxWidth: 400,
+        height: "20%",
+        borderRadius: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 1,
+        backgroundColor: colorScheme.light.foregroundColor
+    },
+    topShelf: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        height: "80%",
+    },
+    bottomShelf: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "20%",
+        borderBottomStartRadius: 15,
+        borderBottomEndRadius: 15,
+        backgroundColor: colorScheme.light.backgroundAccentColor
+    },
+    sections: {
+        width: "33%",
+        alignItems: "center",
+    }
 })
