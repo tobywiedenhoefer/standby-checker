@@ -6,9 +6,9 @@ import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context"
 import {useLocalSearchParams} from "expo-router"
 
 import P from "@/components/text/P"
-import TripCard from "@/components/TripCard";
+import TicketCard from "@/components/TicketCard";
 
-import Trip from "@/types/Trip.type";
+import Ticket from "@/types/Ticket.type";
 
 import getTrips from "@/services/getTrips";
 
@@ -18,12 +18,12 @@ export default function Search() {
     if (!params["toId"] || !params["fromId"]) {
         throw Error("toId and fromId are required!")
     }
-    const [trips, setTrips] = useState<Trip[]>([])
+    const [tickets, setTickets] = useState<Ticket[]>([])
     useEffect(() => {
         const fromId = typeof params.fromId === "string" ? params.fromId : ""
         const toId = typeof params.toId === "string" ? params.toId : ""
-        const trips = getTrips(fromId, toId)
-        setTrips(trips)
+        const tickets = getTrips(fromId, toId)
+        setTickets(tickets)
     }, [])
     return (
         <SafeAreaProvider>
@@ -32,7 +32,7 @@ export default function Search() {
                 <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
                     {trips.map((trip) => {
                         return (
-                            <TripCard key={trip.id} trip={trip}/>
+                            <TicketCard key={trip.id} ticket={trip}/>
                         )
                     })}
                 </View>
