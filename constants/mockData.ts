@@ -1,6 +1,7 @@
 import Flight from "@/types/Flight.type"
 import Destination from "@/types/Destination.type";
 import Airline from "@/types/Airline.type";
+import Ticket from "@/types/Ticket.type";
 
 export const USE_MOCK_DATA = true
 
@@ -133,10 +134,10 @@ const airlines: { [shorname: string]: Airline } = {
   },
 }
 
-export const MOCK_AIRLINES: Airline[] = Object.values(airlines)
+export const MOCK_AIRLINES: { [shortname: string]: Airline } = airlines
 
-export const MOCK_FLIGHTS: Flight[] = [
-  {
+export const MOCK_FLIGHTS: { [id: string]: Flight } = {
+  sfToHnd: {
     id: "sf-to-hnd-uuid",
     airline: airlines.ana,
     destination: {
@@ -144,7 +145,7 @@ export const MOCK_FLIGHTS: Flight[] = [
       to: JapaneseDestinations.hnd
     }
   },
-  {
+  seaToHnd: {
     id: "sea-to-hnd-uuid",
     airline: airlines.delta,
     destination: {
@@ -152,7 +153,7 @@ export const MOCK_FLIGHTS: Flight[] = [
       to: JapaneseDestinations.hnd
     },
   },
-  {
+  pdxToSea: {
     id: "pdx-to-sea-uuid",
     airline: airlines.delta,
     destination: {
@@ -160,7 +161,7 @@ export const MOCK_FLIGHTS: Flight[] = [
       to: AmericanDestinations.sea
     }
   },
-  {
+  seaToHk: {
     id: "sea-to-hk-uuid",
     airline: airlines.aa,
     destination: {
@@ -168,7 +169,7 @@ export const MOCK_FLIGHTS: Flight[] = [
       to: HongKongDestinations.hk
     }
   },
-  {
+  hkToHnd: {
     id: "hk-to-hnd-uuid",
     airline: airlines.ana,
     destination: {
@@ -176,7 +177,7 @@ export const MOCK_FLIGHTS: Flight[] = [
       to: JapaneseDestinations.hnd
     }
   },
-  {
+  sfToSin: {
     id: "sf-to-sin-uuid",
     airline: airlines.aa,
     destination: {
@@ -184,7 +185,7 @@ export const MOCK_FLIGHTS: Flight[] = [
       to: SingaporeDestinations.sin
     }
   },
-  {
+  sinToHnd: {
     id: "sin-to-hnd-uuid",
     airline: airlines.ana,
     destination: {
@@ -192,7 +193,7 @@ export const MOCK_FLIGHTS: Flight[] = [
       to: JapaneseDestinations.hnd
     }
   },
-  {
+  sfToSea: {
     id: "sf-to-sea-uuid",
     airline: airlines.delta,
     destination: {
@@ -200,12 +201,162 @@ export const MOCK_FLIGHTS: Flight[] = [
       to: AmericanDestinations.sea
     }
   },
-  {
+  seaToSf: {
     id: "sea-to-sf-uuid",
     airline: airlines.delta,
     destination: {
       from: AmericanDestinations.sea,
       to: AmericanDestinations.sf
+    }
+  }
+}
+
+
+export const MOCK_TICKETS: Ticket[] = [
+  {
+    id: "sf.sea.hnd",
+    flights: {
+      0: MOCK_FLIGHTS.sfToSea,
+    }
+  },
+  {
+    id: "sf.sea.hnd",
+    flights: {
+      0: MOCK_FLIGHTS.sfToSea,
+      1: MOCK_FLIGHTS.seaToHnd
+    }
+  },
+  {
+    id: "sf.hnd",
+    flights: {
+      0: MOCK_FLIGHTS.sfToHnd
+    }
+  },
+  {
+    id: "sf.hk",
+    flights: {
+      0: MOCK_FLIGHTS.sfToHk
+    }
+  },
+  {
+    id: "sf.hk.hnd",
+    flights: {
+      0: MOCK_FLIGHTS.sfToHk,
+      1: MOCK_FLIGHTS.hkToHnd
+    }
+  },
+  {
+    id: "sf.sin",
+    flights: {
+      0: MOCK_FLIGHTS.sfToSin
+    }
+  },
+  {
+    id: "sf.sin.hnd",
+    flights: {
+      0: MOCK_FLIGHTS.sfToSin,
+      1: MOCK_FLIGHTS.sinToHnd
+    }
+  },
+  {
+    id: "sea.sf",
+    flights: {
+      0: MOCK_FLIGHTS.seaToSf,
+    }
+  },
+  {
+    id: "sea.sf.hnd",
+    flights: {
+      0: MOCK_FLIGHTS.seaToSf,
+      1: MOCK_FLIGHTS.seaToHnd
+    }
+  },
+  {
+    id: "sea.hk",
+    flights: {
+      0: MOCK_FLIGHTS.seaToHk,
+    }
+  },
+  {
+    id: "sea.hk.hnd",
+    flights: {
+      0: MOCK_FLIGHTS.seaToHk,
+      1: MOCK_FLIGHTS.hkToHnd
+    }
+  },
+  {
+    id: "pdx.sea",
+    flights: {
+      0: MOCK_FLIGHTS.pdxToSea,
+    }
+  },
+  {
+    id: "pdx.sea.hnd",
+    flights: {
+      0: MOCK_FLIGHTS.pdxToSea,
+      1: MOCK_FLIGHTS.seaToHnd
+    }
+  },
+  {
+    id: "pdx.sea.hk",
+    flights: {
+      0: MOCK_FLIGHTS.pdxToSea,
+      1: MOCK_FLIGHTS.seaToHk
+    }
+  },
+  {
+    id: "pdx.sea.hk.hnd",
+    flights: {
+      0: MOCK_FLIGHTS.pdxToSea,
+      1: MOCK_FLIGHTS.seaToHk,
+      2: MOCK_FLIGHTS.hkToHnd
+    }
+  },
+  {
+    id: "pdx.sea.sf",
+    flights: {
+      0: MOCK_FLIGHTS.pdxToSea,
+      1: MOCK_FLIGHTS.seaToSf,
+    }
+  },
+  {
+    id: "pdx.sea.sf.hk",
+    flights: {
+      0: MOCK_FLIGHTS.pdxToSea,
+      1: MOCK_FLIGHTS.seaToSf,
+      2: MOCK_FLIGHTS.sfToHk,
+    }
+  },
+  {
+    id: "pdx.sea.sf.hk.hnd",
+    flights: {
+      0: MOCK_FLIGHTS.pdxToSea,
+      1: MOCK_FLIGHTS.seaToSf,
+      2: MOCK_FLIGHTS.sfToHk,
+      3: MOCK_FLIGHTS.hkToHnd
+    }
+  },
+  {
+    id: "pdx.sea.sf.sin",
+    flights: {
+      0: MOCK_FLIGHTS.pdxToSea,
+      1: MOCK_FLIGHTS.seaToSf,
+      2: MOCK_FLIGHTS.sfToSin,
+    }
+  },
+  {
+    id: "pdx.sea.sf.sin.hnd",
+    flights: {
+      0: MOCK_FLIGHTS.pdxToSea,
+      1: MOCK_FLIGHTS.seaToSf,
+      2: MOCK_FLIGHTS.sfToSin,
+      3: MOCK_FLIGHTS.sinToHnd
+    }
+  },
+  {
+    id: "hk.hnd",
+    flights: {
+      0: MOCK_FLIGHTS.hkToHnd
     }
   }
 ]
