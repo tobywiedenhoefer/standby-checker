@@ -1,16 +1,16 @@
 import {useEffect, useState} from "react"
-
-import {View} from "react-native"
+import {View, FlatList} from "react-native"
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context"
+import {useLocalSearchParams, router} from "expo-router"
+import Feather from "@expo/vector-icons/Feather";
 
-import {useLocalSearchParams} from "expo-router"
-
-import P from "@/components/text/P"
 import TicketCard from "@/components/TicketCard";
 
 import Ticket from "@/types/Ticket.type";
 
 import getTickets from "@/services/getTickets";
+
+import {textStyle} from "@/constants/styling";
 
 
 export default function Search() {
@@ -27,14 +27,29 @@ export default function Search() {
     }, [])
     return (
         <SafeAreaProvider>
-            <SafeAreaView style={{flex: 1, marginHorizontal: "5%"}}>
-                <P>Search</P>
-                <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-                    {tickets.map((ticket) => {
-                        return (
-                            <TicketCard key={ticket.id} ticket={ticket}/>
-                        )
-                    })}
+            <SafeAreaView style={{flex: 1}}>
+                <View style={{padding: 15}}>
+                    <Feather
+                        name="arrow-left"
+                        onPress={() => router.back()}
+                        size={textStyle.p.fontSize}
+                    >
+                        Back
+                    </Feather>
+                </View>
+                <View style={{flex: 1, alignItems: "center"}}>
+                    <FlatList
+                        data={tickets}
+                        renderItem={({item}) => (
+                            <TicketCard
+                                ticket={item}
+                                key={item.id}
+                                style={{
+                                    marginVertical: 10,
+                                }}
+                            />
+                        )}
+                    />
                 </View>
             </SafeAreaView>
         </SafeAreaProvider>

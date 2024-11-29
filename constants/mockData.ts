@@ -185,6 +185,14 @@ export const MOCK_FLIGHTS: { [id: string]: Flight } = {
       to: SingaporeDestinations.sin
     }
   },
+  sfToHk: {
+    id: "sf-to-hk-uuid",
+    airline: airlines.aa,
+    destination: {
+      from: AmericanDestinations.sf,
+      to: HongKongDestinations.hk
+    }
+  },
   sinToHnd: {
     id: "sin-to-hnd-uuid",
     airline: airlines.ana,
