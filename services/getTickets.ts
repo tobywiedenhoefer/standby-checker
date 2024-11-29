@@ -7,7 +7,7 @@ export default function getTrips(fromId: Destination["id"], toId: Destination["i
     if (USE_MOCK_DATA) {
         return MOCK_TICKETS
             .filter((ticket) => {
-                return ticket.flights[0].destination.from.id === fromId && ticket.flights[Object.keys(ticket.flights).length].destination.to.id === toId
+                return ticket.flights[0].destination.from.id === fromId && ticket.flights[Object.keys(ticket.flights).length - 1].destination.to.id === toId
             })
     }
     return []
