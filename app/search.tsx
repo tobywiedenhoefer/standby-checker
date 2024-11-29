@@ -10,7 +10,7 @@ import TicketCard from "@/components/TicketCard";
 
 import Ticket from "@/types/Ticket.type";
 
-import getTrips from "@/services/getTrips";
+import getTickets from "@/services/getTickets";
 
 
 export default function Search() {
@@ -22,7 +22,7 @@ export default function Search() {
     useEffect(() => {
         const fromId = typeof params.fromId === "string" ? params.fromId : ""
         const toId = typeof params.toId === "string" ? params.toId : ""
-        const tickets = getTrips(fromId, toId)
+        const tickets = getTickets(fromId, toId)
         setTickets(tickets)
     }, [])
     return (
@@ -30,9 +30,9 @@ export default function Search() {
             <SafeAreaView style={{flex: 1, marginHorizontal: "5%"}}>
                 <P>Search</P>
                 <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-                    {trips.map((trip) => {
+                    {tickets.map((ticket) => {
                         return (
-                            <TicketCard key={trip.id} ticket={trip}/>
+                            <TicketCard key={ticket.id} ticket={ticket}/>
                         )
                     })}
                 </View>
