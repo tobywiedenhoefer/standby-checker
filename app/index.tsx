@@ -72,7 +72,11 @@ export default function Index() {
               <P numberOfLines={1}>{fromDestinationName.length > 0 ? fromDestinationName : "Search..."}</P>
             </Pressable>
           </LabelRow>
-          <LabelRow label={"Where are you going?"} style={{marginVertical: 10}}>
+          <LabelRow
+            label={"Where are you going?"}
+            style={{marginVertical: 10}}
+            isError={!toDestinationId}
+          >
             <Pressable onPress={() => setToModalVisible(true)}>
               <P numberOfLines={1}>{toDestinationName.length > 0 ? toDestinationName : "Search..."}</P>
             </Pressable>
@@ -94,6 +98,7 @@ export default function Index() {
               })}
               variant="primary"
               style={{width: "90%", marginBottom: 10}}
+              disabled={!toDestinationId}
             />
             <ThemedButton
               label="Clear"

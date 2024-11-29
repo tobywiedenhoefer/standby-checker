@@ -15,7 +15,8 @@ export const colorScheme = {
     light: {
         backgroundColor: "#ECEDEE",
         backgroundAccentColor: "gray",
-        foregroundColor: "white"
+        foregroundColor: "white",
+        errorBorderColor: "red"
     }
 }
 
@@ -32,34 +33,53 @@ export const buttonStyles = StyleSheet.create({
     tertiary: {},
 })
 
+export const labelRowStyles = StyleSheet.create({
+    shape: {
+        flexDirection: "row",
+        alignItems: "center",
+        borderWidth: 1,
+        borderRadius: 15,
+        paddingVertical: 15,
+    }
+})
+
 export const tripCardStyles = StyleSheet.create({
     shape: {
-        width: "100%",
-        maxWidth: 400,
-        height: "20%",
-        borderRadius: 15,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 2,
+            height: 5,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 4,
+        shadowRadius: 6,
         elevation: 1,
-        backgroundColor: colorScheme.light.foregroundColor
+        backgroundColor: colorScheme.light.foregroundColor,
+        borderRadius: 15,
+        marginHorizontal: 25,
+        minWidth: 300,
     },
     topShelf: {
         flexDirection: "row",
         justifyContent: "space-between",
-        height: "80%",
+        paddingTop: 5,
+        borderTopStartRadius: 15,
+        borderTopEndRadius: 15,
+    },
+    middleShelf: {
+        flexDirection: "column",
+    },
+    toFromText: {
+        paddingVertical: 10,
+        flexDirection: "row",
+        justifyContent: "space-evenly",
     },
     bottomShelf: {
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        height: "20%",
         borderBottomStartRadius: 15,
         borderBottomEndRadius: 15,
+        padding: 5,
         backgroundColor: colorScheme.light.backgroundAccentColor
     },
     sections: {

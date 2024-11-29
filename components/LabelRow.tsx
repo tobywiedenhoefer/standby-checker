@@ -2,21 +2,18 @@ import {View, ViewProps} from "react-native"
 
 import Label from "@/components/text/Label"
 
-import {colorScheme} from "@/constants/styling"
+import {colorScheme, labelRowStyles} from "@/constants/styling"
 
 
 type LabelRowProps = {
-    label: string
+    label: string,
+    isError?: boolean
 } & ViewProps
 export default function LabelRow(props: LabelRowProps) {
     return (
-        <View style={[{
-            flexDirection: "row",
-            alignItems: "center",
-            borderWidth: 1,
-            borderRadius: 15,
-            paddingVertical: 15
-        }, props.style]}>
+        <View
+            style={[labelRowStyles.shape, props.style, props.isError ? {borderColor: colorScheme.light.errorBorderColor} : {}]}
+        >
             <View style={{
                 width: "100%",
                 paddingHorizontal: 15
