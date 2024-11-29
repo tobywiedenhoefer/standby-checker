@@ -1,10 +1,11 @@
+import Airport from "@/types/Airport.type"
+
 type Destination = {
     id: string,
     city: string,
     state: string | null,
     country: string,
-    airportCode: string,
-    airportName: string,
+    airports: Airport[],
     // TODO: add prefecture/region?
 }
 export default Destination
